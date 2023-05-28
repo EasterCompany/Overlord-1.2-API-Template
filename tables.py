@@ -47,9 +47,7 @@ class TestModel(models.Model):
       # Print the received test_data to console
       console.out(f"\n> Received Test Data\n\n{test_data}\n")
       # Create the test data in a db table row
-      TestModel.objects.create(data=test_data)
-      # Save changes to the db table
-      TestModel.save()
+      TestModel.objects.update_or_create(data=test_data)
       # Return a success response
       return api.success()
     except Exception as db_error:

@@ -1,14 +1,15 @@
+# Universal API __init__.py
+#   Edit this file to configure your API
+
 # Overlord library
-from core.library.api import UniversalAPI
+from core.library import Path, dirname, realpath, api
 
 
-class _API(UniversalAPI):
+class _API(api.UniversalAPI):
 
-  # API.NAME [ usually dictates the origin of endpoints ]
-  NAME = "api_name"
-
-  # API.CLIENT_NAME [ dictates that this api belongs to a specific client ]
-  CLIENT_NAME = "api_name"
+  # API.NAME represents which endpoint the urls for this API will be based on
+  # for example: .../api/api_name/foobar
+  NAME = Path(dirname(realpath(__file__))).parts[-1]
 
   def __init__(self) -> None:
     super().__init__()
